@@ -1,5 +1,6 @@
 const express = require('express'),
-	  app = express();
+	  app = express(),
+	  si = require('systeminformation');
 
 const server = app.listen(3000, function() {
 	var port = server.address().port;
@@ -7,6 +8,9 @@ const server = app.listen(3000, function() {
 
 app.get('/', ((req,res) => {
 	res.send('DMH');
+	si.cpu()
+	    .then(data => console.log(data))
+	    .catch(error => console.error(error));
 }));
 
 
